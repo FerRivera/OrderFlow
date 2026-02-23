@@ -25,7 +25,7 @@ DB default (local):
 - Port: `5432`
 - Database: `orderflow_orders`
 - Username: `orderflow`
-- Password: `orderflow_pwd`
+- Password: `<set locally>`
 
 ## Configure connection string (local only)
 Create `OrderFlow.Orders.Api/appsettings.Development.json` (ignored by git):
