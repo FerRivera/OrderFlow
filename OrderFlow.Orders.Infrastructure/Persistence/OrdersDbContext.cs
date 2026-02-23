@@ -17,5 +17,13 @@ namespace OrderFlow.Orders.Infrastructure.Persistence
         public OrdersDbContext(DbContextOptions<OrdersDbContext> options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Order>().ToTable("orders");
+            modelBuilder.Entity<OutboxMessage>().ToTable("outbox_messages");
+        }
     }
 }

@@ -12,7 +12,12 @@ namespace OrderFlow.Orders.Application.UseCases
 {
     public sealed class CreateOrderUseCase : ICreateOrderUseCase
     {
-        public Order Execute(CreateOrderRequest request)
+        private readonly IOrdersRepository _ordersRepository;
+        public CreateOrderUseCase(IOrdersRepository ordersRepository)
+        {
+            _ordersRepository = ordersRepository;
+        }
+        public async Task<Order> ExecuteAsync(CreateOrderRequest request, CancellationToken ct)
         {
             var order = new Order
             {
@@ -24,6 +29,8 @@ namespace OrderFlow.Orders.Application.UseCases
                 CreatedAtUtc = DateTime.UtcNow,
                 UpdatedAtUtc = null
             };
+
+            await _ordersRepository.AddAsync(order);
             return order;
         }
     }

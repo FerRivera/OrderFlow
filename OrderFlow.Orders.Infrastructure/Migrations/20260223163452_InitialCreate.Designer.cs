@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OrderFlow.Orders.Infrastructure.Persistence;
@@ -11,9 +12,11 @@ using OrderFlow.Orders.Infrastructure.Persistence;
 namespace OrderFlow.Orders.Infrastructure.Migrations
 {
     [DbContext(typeof(OrdersDbContext))]
-    partial class OrdersDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260223163452_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,9 +57,9 @@ namespace OrderFlow.Orders.Infrastructure.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_orders");
+                        .HasName("pk_order");
 
-                    b.ToTable("orders", (string)null);
+                    b.ToTable("order", (string)null);
                 });
 
             modelBuilder.Entity("OrderFlow.Orders.Domain.Outbox.OutboxMessage", b =>
@@ -89,9 +92,9 @@ namespace OrderFlow.Orders.Infrastructure.Migrations
                         .HasColumnName("type");
 
                     b.HasKey("Id")
-                        .HasName("pk_outbox_messages");
+                        .HasName("pk_outbox_message");
 
-                    b.ToTable("outbox_messages", (string)null);
+                    b.ToTable("outbox_message", (string)null);
                 });
 #pragma warning restore 612, 618
         }

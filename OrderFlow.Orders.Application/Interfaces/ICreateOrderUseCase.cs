@@ -10,6 +10,6 @@ namespace OrderFlow.Orders.Application.Interfaces
 {
     public interface ICreateOrderUseCase
     {
-        Order Execute(CreateOrderRequest request);
+        Task<Order> ExecuteAsync(CreateOrderRequest request, CancellationToken ct = default);
     }
 }

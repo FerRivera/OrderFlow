@@ -17,7 +17,7 @@ namespace OrderFlow.Orders.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateOrderHttpRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateOrderHttpRequest request)
         {
             var userId = Guid.Parse("11111111-1111-1111-1111-111111111111");
 
@@ -26,7 +26,7 @@ namespace OrderFlow.Orders.Api.Controllers
                 request.Operation,
                 request.Amount);
 
-            var order = _createOrderUseCase.Execute(appRequest);
+            var order = await _createOrderUseCase.ExecuteAsync(appRequest);
             //return Ok(order);
             return Created("", order);
         }

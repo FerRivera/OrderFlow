@@ -25,7 +25,7 @@ namespace OrderFlow.Orders.Api.Controllers
                 10m
             );
 
-            var response = _createOrderUseCase.Execute(createOrderRequest);
+            var response = _createOrderUseCase.ExecuteAsync(createOrderRequest);
             return Ok(response);
         }
     }
