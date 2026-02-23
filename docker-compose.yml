@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_DB: orderflow_orders
       POSTGRES_USER: orderflow
-      POSTGRES_PASSWORD: orderflow_pwd
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       TZ: America/Argentina/Buenos_Aires
     ports:
       - "5432:5432"

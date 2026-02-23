@@ -25,7 +25,13 @@ DB default (local):
 - Port: `5432`
 - Database: `orderflow_orders`
 - Username: `orderflow`
-- Password: `<set locally>`
+- Password: `<set in .env (not committed)>`
+
+## Environment variables (local only)
+Create a `.env` file at the solution root (ignored by git):
+
+```env
+POSTGRES_PASSWORD=your_password_here
 
 ## Configure connection string (local only)
 Create `OrderFlow.Orders.Api/appsettings.Development.json` (ignored by git):
