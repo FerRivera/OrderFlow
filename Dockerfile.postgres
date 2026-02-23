@@ -1,0 +1,7 @@
+FROM postgres:16
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends tzdata \
+  && ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /usr/share/zoneinfo/America/Buenos_Aires \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*

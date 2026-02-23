@@ -1,0 +1,18 @@
+services:
+  orders-db:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    container_name: orderflow-orders-db
+    environment:
+      POSTGRES_DB: orderflow_orders
+      POSTGRES_USER: orderflow
+      POSTGRES_PASSWORD: orderflow_pwd
+      TZ: America/Argentina/Buenos_Aires
+    ports:
+      - "5432:5432"
+    volumes:
+      - orderflow_orders_db:/var/lib/postgresql/data
+
+volumes:
+  orderflow_orders_db:

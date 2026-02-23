@@ -1,0 +1,112 @@
+###############################################################################
+# .NET / Visual Studio / Rider / VS Code - full gitignore for solution root
+###############################################################################
+
+# Build outputs
+**/bin/
+**/obj/
+**/out/
+**/TestResults/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+*.pdb
+*.opendb
+*.VC.db
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# NuGet
+**/packages/
+*.nupkg
+*.snupkg
+# Uncomment if you don't want lock files committed:
+# packages.lock.json
+
+# Publish / artifacts
+**/publish/
+**/artifacts/
+
+# Logs
+**/*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+###############################################################################
+# App configuration (local/dev only)
+###############################################################################
+
+# Keep appsettings.json committed, but not local/dev overrides
+**/appsettings.Development.json
+**/appsettings.*.Development.json
+**/appsettings.Local.json
+**/appsettings.*.Local.json
+
+# launchSettings is machine-specific (profiles/ports)
+**/Properties/launchSettings.json
+
+# User secrets (if you export them)
+**/secrets.json
+
+###############################################################################
+# Databases / local state
+###############################################################################
+
+# SQLite / local db files
+**/*.db
+**/*.db-shm
+**/*.db-wal
+
+# Generic local data folders (if you ever add mapped volumes)
+**/data/
+**/postgres-data/
+**/pgdata/
+
+###############################################################################
+# Docker
+###############################################################################
+
+# Env files (often contain secrets)
+.env
+.env.*
+
+# Compose override is usually local
+docker-compose.override.yml
+
+###############################################################################
+# Misc tooling caches
+###############################################################################
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Coverage
+**/coverage/
+**/coverage.*.xml
+**/*.coverage
+**/*.coveragexml
+
+# Node (if you add a UI later)
+**/node_modules/
+**/dist/
+**/.next/
