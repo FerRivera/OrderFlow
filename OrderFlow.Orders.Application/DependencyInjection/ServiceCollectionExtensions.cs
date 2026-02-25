@@ -14,6 +14,7 @@ namespace OrderFlow.Orders.Application.DependencyInjection
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<ICreateOrder, CreateOrder>();
+            services.AddScoped<IGetOrderById, GetOrderById>();
             return services;
         }
     }

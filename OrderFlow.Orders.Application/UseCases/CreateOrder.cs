@@ -30,7 +30,7 @@ namespace OrderFlow.Orders.Application.UseCases
                 UpdatedAtUtc = null
             };
 
-            await _ordersRepository.AddAsync(order);
+            await _ordersRepository.AddAsync(order,ct);
             return order;
         }
     }

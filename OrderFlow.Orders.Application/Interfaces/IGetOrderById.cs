@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace OrderFlow.Orders.Application.Interfaces
 {
-    public interface IOrdersRepository
+    public interface IGetOrderById
     {
-        Task AddAsync(Order order, CancellationToken ct = default);
-        Task<Order?> GetByIdAsync(Guid id, CancellationToken ct = default);
+        Task<Order?> ExecuteAsync(Guid id, CancellationToken ct = default);
     }
 }
