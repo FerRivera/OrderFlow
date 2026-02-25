@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OrderFlow.Orders.Application.Interfaces
 {
-    public interface ICreateOrderUseCase
+    public interface ICreateOrder
     {
         Task<Order> ExecuteAsync(CreateOrderRequest request, CancellationToken ct = default);
     }

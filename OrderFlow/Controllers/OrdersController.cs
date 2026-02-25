@@ -10,8 +10,8 @@ namespace OrderFlow.Orders.Api.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        private readonly ICreateOrderUseCase _createOrderUseCase;
-        public OrdersController(ICreateOrderUseCase createOrderUseCase) 
+        private readonly ICreateOrder _createOrderUseCase;
+        public OrdersController(ICreateOrder createOrderUseCase) 
         {
             _createOrderUseCase = createOrderUseCase;
         }

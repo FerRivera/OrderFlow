@@ -1,7 +1,6 @@
-using OrderFlow.Orders.Application.Interfaces;
-using OrderFlow.Orders.Application.UseCases;
 using System.Text.Json.Serialization;
 using OrderFlow.Orders.Infrastructure.DependencyInjection;
+using OrderFlow.Orders.Application.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers()
     .AddJsonOptions(x => x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
-builder.Services.AddScoped<ICreateOrderUseCase, CreateOrderUseCase>();
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();

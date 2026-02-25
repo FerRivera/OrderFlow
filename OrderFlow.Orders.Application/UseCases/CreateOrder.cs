@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace OrderFlow.Orders.Application.UseCases
 {
-    public sealed class CreateOrderUseCase : ICreateOrderUseCase
+    public sealed class CreateOrder : ICreateOrder
     {
         private readonly IOrdersRepository _ordersRepository;
-        public CreateOrderUseCase(IOrdersRepository ordersRepository)
+        public CreateOrder(IOrdersRepository ordersRepository)
         {
             _ordersRepository = ordersRepository;
         }
