@@ -19,19 +19,12 @@ namespace OrderFlow.Orders.Application.UseCases
         }
         public async Task<Order> ExecuteAsync(CreateOrderRequest request, CancellationToken ct)
         {
-            var order = new Order
-            {
-                Id = Guid.NewGuid(),
-                UserId = request.UserId,
-                Operation = request.Operation,
-                Amount = request.Amount,
-                Status = OrderStatus.PendingPayment,
-                CreatedAtUtc = DateTime.UtcNow,
-                UpdatedAtUtc = null
-            };
 
-            await _ordersRepository.AddAsync(order,ct);
+            var order = Order.Create(request.UserId, request.Operation, request.Amount);
+
+            await _ordersRepository.AddAsync(order, ct);
             return order;
+
         }
     }
 }
