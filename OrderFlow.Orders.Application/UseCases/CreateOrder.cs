@@ -2,10 +2,12 @@
 using OrderFlow.Orders.Application.Interfaces;
 using OrderFlow.Orders.Domain;
 using OrderFlow.Orders.Domain.Orders;
+using OrderFlow.Orders.Domain.Outbox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace OrderFlow.Orders.Application.UseCases
@@ -22,7 +24,19 @@ namespace OrderFlow.Orders.Application.UseCases
 
             var order = Order.Create(request.UserId, request.Operation, request.Amount);
 
-            await _ordersRepository.AddAsync(order, ct);
+            var payload = JsonSerializer.Serialize(new
+            {
+                order.Id,
+                order.UserId,
+                order.Operation,
+                order.Amount,
+                order.Status,
+                order.CreatedAtUtc
+            });
+
+            var outBoxMessage = OutboxMessage.Create("OrderCreated",payload);
+
+            await _ordersRepository.AddWithOutboxAsync(order, outBoxMessage, ct);
             return order;
 
         }
